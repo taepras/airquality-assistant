@@ -12,5 +12,8 @@ app.intent('AIR_QUALITY', (conv)=>{
 
 const expressApp = express().use(bodyParser.json());
 expressApp.post('/webhook',app);
+expressApp.get("/", (req, res) => {
+  res.send("Hello World!");
+});
 
 expressApp.listen(port);
