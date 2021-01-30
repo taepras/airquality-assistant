@@ -7,11 +7,12 @@ const app = dialogflow({ debug:true });
 
 app.intent('AIR_QUALITY', (conv)=>{
     console.log('incoming AIR_QUALTY invoke ', JSON.stringify(conv));
-    conv.ask('Hello world!!');
+    conv.add('Hello world!!');
 });
 
 const expressApp = express().use(bodyParser.json());
-expressApp.post('/webhook',app);
+expressApp.post("/webhook", app);
+expressApp.get("/webhook", app);
 expressApp.get("/", (req, res) => {
   res.send("Hello World!");
 });
