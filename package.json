@@ -18,6 +18,7 @@
   },
   "homepage": "https://github.com/taepras/airquality-assistant#readme",
   "dependencies": {
+    "@assistant/conversation": "^3.2.0",
     "actions-on-google": "^2.13.0",
     "express": "^4.17.1"
   }

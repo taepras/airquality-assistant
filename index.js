@@ -1,9 +1,12 @@
 'use strict';
 const express = require('express');
-const { dialogflow } = require('actions-on-google');
+// const { dialogflow } = require('actions-on-google');
 const bodyParser = require('body-parser')
 const port = process.env.PORT || 3000;
-const app = dialogflow({ debug:true });
+// const app = dialogflow({ debug:true });
+const { conversation, Image } = require("@assistant/conversation");
+
+const app = conversation();
 
 app.intent('AIR_QUALITY', (conv)=>{
     console.log('incoming AIR_QUALTY invoke ', JSON.stringify(conv));
