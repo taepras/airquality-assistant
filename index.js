@@ -55,17 +55,24 @@ app.handle("AIR_QUALITY", (conv) => {
   // console.log("permission", permission);
   // conv.add(permission);
 
-  fetchPollutionLevel()
-    .then((res) => {
-      conv.add(
-        `Air quality at ${res.nameEN} is ${getAQILevelText(
-          res.LastUpdate.AQI.aqi
-        )} with the aqi of ${res.LastUpdate.AQI.aqi}. PM 2.5 concentration is ${
-          res.LastUpdate.PM25.value
-        } ${res.LastUpdate.PM25.unit}.`
-      );
-    })
-    .catch((err) => console.log(err));
+  return new Promise((resolve, reject) => {
+    fetchPollutionLevel()
+      .then((res) => {
+        conv.add(
+          `Air quality at ${res.nameEN} is ${getAQILevelText(
+            res.LastUpdate.AQI.aqi
+          )} with the aqi of ${res.LastUpdate.AQI.aqi}. PM 2.5 concentration is ${
+            res.LastUpdate.PM25.value
+          } ${res.LastUpdate.PM25.unit}.`
+        );
+
+        resolve(res);
+      })
+      .catch((err) => {
+        console.log(err)
+        reject(err);
+      });
+  })
 });
 
 // app.intent("actions.intent.MAIN", (conv) => {
