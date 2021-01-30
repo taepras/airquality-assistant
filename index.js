@@ -1,10 +1,10 @@
 "use strict";
 const express = require("express");
-// const { dialogflow } = require('actions-on-google');
+const { Permission } = require("actions-on-google");
 const bodyParser = require("body-parser");
 const port = process.env.PORT || 3000;
 // const app = dialogflow({ debug:true });
-const { conversation, Image, Permission } = require("@assistant/conversation");
+const { conversation, Image } = require("@assistant/conversation");
 
 const app = conversation();
 
