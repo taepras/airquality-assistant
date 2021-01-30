@@ -4,7 +4,7 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const port = process.env.PORT || 3000;
 // const app = dialogflow({ debug:true });
-const { conversation, Image } = require("@assistant/conversation");
+const { conversation, Image, Permission } = require("@assistant/conversation");
 
 const app = conversation();
 
