@@ -60,10 +60,9 @@ app.handle("AIR_QUALITY", (conv) => {
       conv.add(
         `Air quality at ${res.nameEN} is ${getAQILevelText(
           res.LastUpdate.AQI.aqi
-        )} with the aqi of ${res.LastUpdate.AQI.aqi}.`
-      );
-      conv.add(
-        `PM 2.5 concentration is ${res.LastUpdate.PM25.value} ${res.LastUpdate.PM25.unit}.`
+        )} with the aqi of ${res.LastUpdate.AQI.aqi}. PM 2.5 concentration is ${
+          res.LastUpdate.PM25.value
+        } ${res.LastUpdate.PM25.unit}.`
       );
     })
     .catch((err) => console.log(err));
@@ -103,7 +102,9 @@ expressApp.get("/", (req, res) => {
         pollutionRes.LastUpdate.AQI.aqi
       )} with the aqi of ${pollutionRes.LastUpdate.AQI.aqi}.`;
       const res2 = `PM 2.5 concentration is ${pollutionRes.LastUpdate.PM25.value} ${pollutionRes.LastUpdate.PM25.unit}.`;
-      res.send(JSON.stringify(pollutionRes, null, 2) + "<br>" + res1 + "<br>" + res2);
+      res.send(
+        JSON.stringify(pollutionRes, null, 2) + "<br>" + res1 + "<br>" + res2
+      );
     })
     .catch((err) => console.log(err));
 });
