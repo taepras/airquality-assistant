@@ -16,7 +16,7 @@ app.handle("AIR_QUALITY", (conv) => {
     context: "location permission",
     permissions: ["DEVICE_PRECISE_LOCATION"],
   };
-  conv.ask(new Permission(options));
+  conv.add(new Permission(options));
 });
 
 const expressApp = express().use(bodyParser.json());
