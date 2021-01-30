@@ -1,10 +1,10 @@
 "use strict";
 const express = require("express");
-// const { dialogflow, Permission } = require("actions-on-google");
+const { dialogflow, Permission } = require("actions-on-google");
 const bodyParser = require("body-parser");
 const port = process.env.PORT || 3000;
 // const app = dialogflow({ debug:true });
-const { conversation, Image, Permission } = require("@assistant/conversation");
+const { conversation, Image } = require("@assistant/conversation");
 
 const app = conversation();
 
@@ -16,7 +16,9 @@ app.handle("AIR_QUALITY", (conv) => {
     context: "location permission",
     permissions: ["DEVICE_PRECISE_LOCATION"],
   };
-  conv.add(new Permission(options));
+  const permission = new Permission(options);
+  console.log("permission", permission);
+  conv.add(permission);
 });
 
 // app.intent("actions.intent.MAIN", (conv) => {
